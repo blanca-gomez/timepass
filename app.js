@@ -3,10 +3,12 @@ const app = express();
 
 const index = require ('./routes/index');
 const endroute = require('./routes/endroute');
+const horaMiddleware = require('./middlewares/horaMiddleware')
+const validarHora = require('./middlewares/validarHora')
 
-
+app.use(horaMiddleware)
 app.use('/', index);
-app.use('/endroute', endroute);
+app.use('/endroute', validarHora, endroute);
 
 
 
